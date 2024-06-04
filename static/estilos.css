@@ -1,0 +1,10 @@
+body {
+    margin: 0; font-family: "Arial",sans-serif;
+    color: chocolate;}
+header {background-color:black; height:  10%; width: 100%; opacity: .9; margin-bottom: 2%;}
+h1{ font-family: serif; text-align: center; color:azure;}
+.container {padding-top: 2%; width:  60%; margin:0 auto; background-color: #dfb887;}
+.container label {font-weight:  bold; margin-bottom: 2em; margin-left:  2em; color: #377ba3;}
+.container input{margin-bottom: 1em; margin-left: 2em;}
+.container button {margin-bottom: 1em; margin-left: 2em;}
+.container textarea {min-height: 12em; resize: vertical;}

@@ -1,0 +1,11 @@
+{% extends "base_template.html" %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+    <h1>Bienvenido, {{ session['name'] }}</h1>
+    <a href="{{ url_for('logout') }}">Cerrar sesión</a>
+{% endblock %}
+
+
+
