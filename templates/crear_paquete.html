@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Paquete</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    <div class="container">
+        <form action="{{ url_for('crear_paquete') }}" method="post">
+            <label for="sucursal_id">Sucursal</label>
+            <select name="sucursal_id">
+                {% for sucursal in sucursales %}
+                    <option value="{{ sucursal.id }}">{{ sucursal.provincia }} - {{ sucursal.direccion }}</option>
+                {% endfor %}
+            </select>
+            <label for="peso">Peso:</label>
+            <input type="number" name="peso" required>
+            <label for="direccion">Dirección:</label>
+            <input type="text" name="direccion" required>
+            <label for="nomdestinatario">Nombre del destinatario:</label>
+            <input type="text" name="nomdestinatario" required>
+            <label for="entregado">Entregado:</label>
+            <input type="checkbox" name="entregado" value="1">
+            <label for="observaciones">Observaciones:</label>
+            <input type="text" name="observaciones">
+            <label for="idrepartidor">ID Repartidor:</label>
+            <input type="number" name="idrepartidor">
+            <label for="idtransporte">ID Transporte:</label>
+            <input type="number" name="idtransporte">
+            <button type="submit">Crear</button>
+        </form>
+    </div>
+</body>
+</html>

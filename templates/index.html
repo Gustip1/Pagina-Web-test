@@ -1,12 +1,32 @@
-{% extends "base_template.html" %}
-
-{% block title %}Bienvenido{% endblock %}
-
-{% block content %}
-    <h1>Bienvenido
-     {{ session['name'] }}</h1>
-    <a href="{{ url_for('logout') }}">Sucursales</a>
-{% endblock %}
-
-
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sucursales</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo_sucursal.css') }}">
+</head>
+<body>
+    <h1>Sucursales</h1>
+    <h2>Lista de Sucursales</h2>
+    <ul>
+        {% for sucursal in sucursales %}
+            <form method="post" action="{{ url_for('crear_paquete') }}">
+                <input type="hidden" name="sucursal_id" value="{{ sucursal.id }}">
+                <li>
+                    <button type="submit" class="sucursal-btn">
+                        ID: {{ sucursal.id }} - Provincia: {{ sucursal.provincia }} - Dirección: {{ sucursal.direccion }}
+                    </button>
+                </li>
+            </form>
+        {% endfor %}
+    </ul>
+    <header>
+        <h1>Salida de Transporte</h1>
+        <form method="get" action="{{ url_for('salida_transporte') }}">
+            <button type="submit" class="salida-btn">
+                Salida de Transporte
+            </button>
+        </form>
+    </header>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Seleccionar Sucursal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    <h1>Seleccionar Sucursal de Destino</h1>
+    <form method="get" action="{{ url_for('seleccionar_paquetes') }}">
+        <ul>
+            {% for sucursal in sucursales %}
+                <li>
+                    <input type="radio" name="sucursal_destino" value="{{ sucursal.id }}" required>
+                    Número: {{ sucursal.numero }} - Provincia: {{ sucursal.provincia }} - Localidad: {{ sucursal.localidad }}
+                </li>
+            {% endfor %}
+        </ul>
+        <button type="submit">Seleccionar Sucursal</button>
+    </form>
+</body>
+</html>

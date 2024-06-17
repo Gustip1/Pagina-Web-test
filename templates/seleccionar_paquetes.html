@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Seleccionar Paquetes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    <h1>Seleccionar Paquetes para Transporte</h1>
+    <form method="post" action="{{ url_for('salida_transporte') }}">
+        <input type="hidden" name="sucursal_destino" value="{{ sucursal_id }}">
+        <ul>
+            {% for paquete in paquetes %}
+                <li>
+                    <input type="checkbox" name="paquete_ids" value="{{ paquete.id }}">
+                    Número de envío: {{ paquete.numeroenvio }} - Dirección: {{ paquete.dirdestinatario }}
+                </li>
+            {% endfor %}
+        </ul>
+        <button type="submit">Registrar Transporte</button>
+    </form>
+</body>
+</html>

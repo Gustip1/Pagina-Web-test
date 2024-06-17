@@ -1,6 +1,6 @@
 import os
 
-db_path = "instance\datos (1).sqlite3"
+db_path = "datos (1).sqlite3"
 
 # Verificar si el archivo existe
 if os.path.exists(db_path):
