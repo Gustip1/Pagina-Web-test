@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Seleccionar Sucursal para Llegada de Transporte</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo_sucursal.css') }}">
+</head>
+<body>
+    <h1>Seleccionar Sucursal para Llegada de Transporte</h1>
+    <form action="{{ url_for('transportes_pendientes') }}" method="get">
+        <label for="sucursal_id">Sucursal:</label>
+        <select name="sucursal_id" id="sucursal_id">
+            {% for sucursal in sucursales %}
+                <option value="{{ sucursal.id }}">{{ sucursal.numero }} - {{ sucursal.provincia }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Seleccionar</button>
+    </form>
+</body>
+</html>

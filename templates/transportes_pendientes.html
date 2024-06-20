@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transportes Pendientes</title>
+</head>
+<body>
+    <h1>Transportes Pendientes</h1>
+    <form action="{{ url_for('llegada_transporte') }}" method="post">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo_sucursal.css') }}">
+        <table>
+            <thead>
+                <tr>
+                    <th>Numero de Transporte</th>
+                    <th>Fecha y Hora de Salida</th>
+                    <th>Seleccionar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transporte in transportes %}
+                    <tr>
+                        <td>{{ transporte.numerotransporte }}</td>
+                        <td>{{ transporte.fechahorasalida }}</td>
+                        <td><input type="radio" name="transporte_id" value="{{ transporte.id }}"></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button type="submit">Registrar Llegada</button>
+    </form>
+</body>
+</html>

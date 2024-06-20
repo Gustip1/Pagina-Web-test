@@ -75,6 +75,7 @@ def salida_transporte():
                     paquete = Paquete.query.get(paquete_id)
                     if paquete:
                         paquete.idtransporte = transporte.id
+                        paquete.idsucursal = sucursal_destino_id  # Esta es la línea modificada
                         db.session.commit()
 
                 flash('Transporte registrado exitosamente', 'success')
@@ -102,6 +103,41 @@ def seleccionar_paquetes():
         flash('No hay paquetes disponibles para transporte', 'info')
     
     return render_template('seleccionar_paquetes.html', sucursal_id=sucursal_id, paquetes=paquetes)
+
+@app.route("/llegada_transporte", methods=['GET', 'POST'])
+def llegada_transporte():
+    if request.method == 'POST':
+        try:
+            transporte_id = request.form.get('transporte_id')
+
+            if transporte_id:
+                transporte = Transporte.query.get(transporte_id)
+                if transporte:
+                    transporte.fechahorallegada = datetime.datetime.now()
+                    db.session.commit()
+                    flash('Llegada del transporte registrada exitosamente', 'success')
+                else:
+                    flash('Transporte no encontrado', 'error')
+            else:
+                flash('Seleccione un transporte', 'error')
+        except Exception as e:
+            db.session.rollback()
+            flash('Hubo un error al registrar la llegada del transporte: {}'.format(str(e)), 'error')
+
+        return redirect(url_for('index'))
+    else:
+        sucursales = Sucursal.query.order_by(Sucursal.numero).all()
+        return render_template('seleccionar_sucursal_llegada.html', sucursales=sucursales)
+
+@app.route("/transportes_pendientes")
+def transportes_pendientes():
+    sucursal_id = request.args.get('sucursal_id')
+    if not sucursal_id:
+        flash('Seleccione una sucursal', 'error')
+        return redirect(url_for('llegada_transporte'))
+
+    transportes = Transporte.query.filter_by(idsucursal=sucursal_id, fechahorallegada=None).all()
+    return render_template('transportes_pendientes.html', transportes=transportes)
 
 if __name__ == '__main__':
     app.run(debug=True)
