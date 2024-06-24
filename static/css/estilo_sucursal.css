@@ -56,3 +56,35 @@ button {
 button:hover {
     background-color: #218838;
 }
+/* Otros estilos ya presentes en tu archivo */
+
+.flashes {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.flashes li {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.flashes li.success {
+    background-color: #4caf50; /* Verde */
+}
+
+.flashes li.error {
+    background-color: #f44336; /* Rojo */
+}
+
+.flashes li.info {
+    background-color: #2196f3; /* Azul */
+}
+
+.flashes li.warning {
+    background-color: #ff9800; /* Naranja */
+}
+

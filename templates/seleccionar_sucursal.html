@@ -7,6 +7,17 @@
 </head>
 <body>
     <h1>Seleccionar Sucursal de Destino</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
     <form method="get" action="{{ url_for('seleccionar_paquetes') }}">
         <ul>
             {% for sucursal in sucursales %}

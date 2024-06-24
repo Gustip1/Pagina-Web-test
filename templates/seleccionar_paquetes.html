@@ -7,6 +7,17 @@
 </head>
 <body>
     <h1>Seleccionar Paquetes para Transporte</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
     <form method="post" action="{{ url_for('salida_transporte') }}">
         <input type="hidden" name="sucursal_destino" value="{{ sucursal_id }}">
         <ul>

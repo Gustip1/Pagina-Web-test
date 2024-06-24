@@ -45,10 +45,10 @@ def crear_paquete():
 
             db.session.add(paquete)
             db.session.commit()
-            flash('Paquete creado exitosamente', 'success')
+            flash('Se creó un paquete exitosamente', 'success')
         except Exception as e:
             db.session.rollback()
-            flash('Hubo un error al crear el paquete: {}'.format(str(e)), 'error')
+            flash('Error al crear paquete: {}'.format(str(e)), 'error')
 
         return redirect(url_for('index'))
     else:
@@ -83,7 +83,7 @@ def salida_transporte():
                 flash('Seleccione una sucursal destino y al menos un paquete', 'error')
         except Exception as e:
             db.session.rollback()
-            flash('Hubo un error al registrar el transporte: {}'.format(str(e)), 'error')
+            flash('Error al registrar transporte: {}'.format(str(e)), 'error')
 
         return redirect(url_for('index'))
     else:
@@ -122,7 +122,7 @@ def llegada_transporte():
                 flash('Seleccione un transporte', 'error')
         except Exception as e:
             db.session.rollback()
-            flash('Hubo un error al registrar la llegada del transporte: {}'.format(str(e)), 'error')
+            flash('Error al registrar la llegada del transporte: {}'.format(str(e)), 'error')
 
         return redirect(url_for('index'))
     else:
